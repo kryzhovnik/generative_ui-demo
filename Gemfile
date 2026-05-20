@@ -68,3 +68,4 @@ group :test do
 end
 
 gem "ruby_llm", "~> 1.15"
+gem "generative_ui", github: "kryzhovnik/generative_ui", ref: "92e8b1e167706dd3b72a480f4a3776921f35dc35"

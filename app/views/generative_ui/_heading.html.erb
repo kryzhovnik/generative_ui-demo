@@ -1,0 +1,4 @@
+<%# locals: (text:, level: nil) %>
+<% resolved_level = (level.to_i.nonzero? || 2).clamp(1, 3) %>
+<% classes = { 1 => "text-2xl font-semibold", 2 => "text-lg font-semibold", 3 => "text-base font-medium text-slate-600" } %>
+<%= content_tag("h#{resolved_level}", text, class: "#{classes[resolved_level]} mt-2") %>

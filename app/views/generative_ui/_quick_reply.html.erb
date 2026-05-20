@@ -1,0 +1,8 @@
+<%# locals: (label:, value: nil) %>
+<button type="button"
+        class="inline-flex items-center rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+        data-controller="quick-reply"
+        data-quick-reply-payload-value="<%= value || label %>"
+        data-action="click->quick-reply#send">
+  <%= label %>
+</button>

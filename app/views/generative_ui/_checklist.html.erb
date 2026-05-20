@@ -1,0 +1,11 @@
+<%# locals: (items:, title: nil) %>
+<div class="rounded-xl border border-slate-200 bg-slate-50 p-4 my-2 w-full max-w-xs">
+  <% if title %>
+    <div class="text-sm font-semibold text-slate-700 mb-2"><%= title %></div>
+  <% end %>
+  <ul class="space-y-1 text-sm text-slate-700">
+    <% Array(items).each do |item| %>
+      <li class="flex gap-2"><span class="text-slate-400">•</span><span><%= item %></span></li>
+    <% end %>
+  </ul>
+</div>

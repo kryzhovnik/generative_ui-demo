@@ -1,0 +1,7 @@
+<%# locals: (orientation:, children:) %>
+<% horizontal = orientation == "horizontal" %>
+<div class="<%= horizontal ? "flex flex-row flex-wrap gap-3 items-start" : "flex flex-col gap-3" %> my-2">
+  <% Array(children).each do |child| %>
+    <%= child %>
+  <% end %>
+</div>
