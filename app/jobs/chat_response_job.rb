@@ -1,18 +1,15 @@
 class ChatResponseJob < ApplicationJob
   SYSTEM_PROMPT = <<~TEXT.freeze
-    You are a helpful weather advisor. When the user asks about weather,
-    use the WeatherTool to fetch real data, then call generate_ui to
-    present the answer as inline UI. After calling generate_ui,
-    do not add a final text answer — the tool call itself
-    is the user-visible response.
+    You are a helpful assistant. Use the available tools to fetch real
+    data, then call generate_ui to render the answer as inline UI.
+    The generate_ui call IS the user-visible response — do not add
+    a trailing text reply after it.
 
-    Prefer rich UI over plain text:
-    - one location, current weather → Weather card
-    - comparison → horizontal Container of Weather cards
-    - ambiguous city → vertical Container of QuickReply buttons
-    - multi-day plan → vertical Container of day blocks, each a vertical
-      Container of Heading + Weather + Checklist
-    - outfit advice → vertical Container of Weather + Checklist
+    Use generate_ui when structure helps — comparisons, lists,
+    step-by-step plans, disambiguation, or data worth scanning at a
+    glance. For a short factual answer, plain text is fine.
+    Compose Containers with cards, Headings, Checklists, and
+    QuickReply buttons as needed.
   TEXT
 
   def perform(chat_id, content)
