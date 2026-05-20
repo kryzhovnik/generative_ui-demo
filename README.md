@@ -1,24 +1,29 @@
-# README
+# generative_ui-demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails demo of the [`generative_ui`](https://github.com/kryzhovnik/generative_ui) gem: an LLM-driven weather advisor that answers with rich inline UI (cards, checklists, quick replies) instead of plain text.
 
-Things you may want to cover:
+## Try it in the chat
 
-* Ruby version
+The assistant maps your question to a UI shape. A few prompts to try:
 
-* System dependencies
+- **Current weather** → single Weather card
+  - *"What's the weather in Lisbon right now?"*
+- **Comparison** → row of Weather cards
+  - *"Compare today's weather in Berlin, Paris, and Madrid."*
+- **Ambiguous city** → QuickReply buttons to disambiguate
+  - *"How's the weather in Springfield?"*
+- **Multi-day plan** → stacked day blocks with Heading + Weather + Checklist
+  - *"Plan a 3-day trip to Reykjavík next week."*
+- **Outfit advice** → Weather card + packing Checklist
+  - *"What should I wear in Tokyo tomorrow?"*
 
-* Configuration
+## Running locally
 
-* Database creation
+```bash
+bin/setup
+bin/dev
+```
 
-* Database initialization
+Set `OPENAI_API_KEY` in the environment, or add `openai_api_key` to Rails credentials. The key is wired up in `config/initializers/ruby_llm.rb`.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The `generative_ui` gem is pinned to a specific commit on GitHub in the `Gemfile`.
