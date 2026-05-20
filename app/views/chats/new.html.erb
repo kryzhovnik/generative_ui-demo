@@ -5,5 +5,26 @@
 
   <%= render "form", chat: @chat %>
 
+  <div class="my-5">
+    <div class="text-sm text-gray-500 mb-2">Or try one of these:</div>
+    <div class="flex flex-wrap gap-2">
+      <% [
+        "What's the weather in Lisbon right now?",
+        "Compare today's weather in Berlin, Paris, and Madrid.",
+        "How's the weather in Springfield?",
+        "Plan a 3-day trip to Reykjavík next week.",
+        "What should I wear in Tokyo tomorrow?"
+      ].each do |prompt| %>
+        <button type="button"
+                data-controller="quick-reply"
+                data-quick-reply-payload-value="<%= prompt %>"
+                data-action="click->quick-reply#send"
+                class="rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition cursor-pointer">
+          <%= prompt %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+
   <%= link_to "Back to chats", chats_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
 </div>

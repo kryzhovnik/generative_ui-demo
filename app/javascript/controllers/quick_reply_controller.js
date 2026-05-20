@@ -6,7 +6,7 @@ export default class extends Controller {
 
   send(event) {
     event.preventDefault()
-    const form = document.getElementById("new_message")
+    const form = document.querySelector("#new_chat,#new_message")
     if (!form) return
     const textarea = form.querySelector("textarea")
     if (textarea) textarea.value = this.payloadValue
