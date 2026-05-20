@@ -1,6 +1,7 @@
 class ChatResponseJob < ApplicationJob
   def perform(chat_id, content)
     chat = Chat.find(chat_id)
+      .with_tools(WeatherTool)
 
     chat.ask(content) do |chunk|
       if chunk.content && !chunk.content.empty?
