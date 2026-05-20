@@ -1,0 +1,44 @@
+<%# locals: (location:, temperature: nil, unit: nil, icon: nil, date: nil, temperature_min: nil, temperature_max: nil, wind: nil, humidity: nil) %>
+<%
+  icon_map = { "sunny" => "☀️", "cloudy" => "☁️", "rainy" => "🌧️", "snowy" => "❄️", "stormy" => "⛈️" }
+  bg_map = {
+    "sunny"  => "bg-gradient-to-br from-amber-100 via-yellow-50 to-orange-100 border-amber-200/70",
+    "cloudy" => "bg-gradient-to-br from-slate-100 via-gray-50 to-blue-100 border-slate-200/80",
+    "rainy"  => "bg-gradient-to-br from-sky-100 via-blue-50 to-indigo-100 border-sky-200/70",
+    "snowy"  => "bg-gradient-to-br from-cyan-50 via-sky-50 to-blue-100 border-cyan-200/70",
+    "stormy" => "bg-gradient-to-br from-indigo-100 via-slate-100 to-purple-100 border-indigo-200/70"
+  }
+  icon_glyph = icon_map[icon] || "🌤️"
+  bg_classes = bg_map[icon] || "bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-100 border-sky-200/70"
+  unit_label = (unit || "c").upcase
+%>
+<div class="rounded-2xl border <%= bg_classes %> shadow-md p-4 my-2 w-full max-w-xs">
+  <div class="flex items-center justify-between">
+    <div>
+      <div class="text-sm text-slate-500 font-medium"><%= location %></div>
+      <% if date %>
+        <div class="text-xs text-slate-400"><%= date %></div>
+      <% end %>
+    </div>
+    <div class="text-3xl leading-none"><%= icon_glyph %></div>
+  </div>
+
+  <div class="mt-3">
+    <% if temperature_min && temperature_max %>
+      <div class="text-2xl font-semibold">
+        <%= temperature_min %>° / <%= temperature_max %>°<span class="text-base text-slate-500"><%= unit_label %></span>
+      </div>
+    <% elsif temperature %>
+      <div class="text-3xl font-semibold">
+        <%= temperature %>°<span class="text-lg text-slate-500"><%= unit_label %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <% if wind || humidity %>
+    <div class="mt-3 flex gap-4 text-xs text-slate-500">
+      <% if wind %><div>Wind <%= wind %> km/h</div><% end %>
+      <% if humidity %><div>Humidity <%= humidity %>%</div><% end %>
+    </div>
+  <% end %>
+</div>
