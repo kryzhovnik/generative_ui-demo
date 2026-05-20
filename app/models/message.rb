@@ -4,6 +4,8 @@ class Message < ApplicationRecord
 
   broadcasts_to ->(message) { "chat_#{message.chat_id}" }, inserts_by: :append
 
+  normalizes :content, with: ->(content) { content.to_s }, apply_to_nil: true
+
   def broadcast_append_chunk(content)
     broadcast_append_to "chat_#{chat_id}",
       target: "message_#{id}_content",
