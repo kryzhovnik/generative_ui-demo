@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/kryzhovnik/generative_ui.git
   revision: 92e8b1e167706dd3b72a480f4a3776921f35dc35
-  ref: 92e8b1e167706dd3b72a480f4a3776921f35dc35
   specs:
     generative_ui (0.0.1)
       activesupport (>= 7.0)
