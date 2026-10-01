@@ -67,5 +67,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "ruby_llm", "~> 1.15"
-gem "generative_ui", github: "kryzhovnik/generative_ui"
+gem "ruby_llm", "~> 2.0"
+gem "generative_ui", github: "kryzhovnik/generative_ui", branch: "main"

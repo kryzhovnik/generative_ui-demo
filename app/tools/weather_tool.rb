@@ -1,7 +1,7 @@
 class WeatherTool < RubyLLM::Tool
   description "Get current weather for a location. The model must supply latitude, longitude, and a display name."
 
-  params do
+  parameters do
     number :latitude,  description: "Latitude of the location."
     number :longitude, description: "Longitude of the location."
     string :location,  description: "Display name of the location (e.g. \"Belgrade\")."

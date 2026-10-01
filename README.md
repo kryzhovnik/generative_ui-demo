@@ -26,4 +26,6 @@ bin/dev
 
 Set `OPENAI_API_KEY` in the environment, or add `openai_api_key` to Rails credentials. The key is wired up in `config/initializers/ruby_llm.rb`.
 
-The `generative_ui` gem is pinned to a specific commit on GitHub in the `Gemfile`.
+The `generative_ui` gem is pulled from the `main` branch on GitHub in the `Gemfile`; `Gemfile.lock` pins the exact commit.
+
+The default model is `gpt-5.6-luna` (see `config/initializers/ruby_llm.rb`). Run `bin/rails ruby_llm:load_models` after setup to fill the model registry.

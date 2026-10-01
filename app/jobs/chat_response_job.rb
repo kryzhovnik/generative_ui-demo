@@ -17,9 +17,7 @@ class ChatResponseJob < ApplicationJob
 
     chat = Chat.find(chat_id)
       .with_instructions(SYSTEM_PROMPT)
-      .with_tools(WeatherTool)
-      .with_tools(ui_tool)
-
+      .with_tools(WeatherTool, ui_tool)
 
     chat.ask(content) do |chunk|
       if chunk.content && !chunk.content.empty?

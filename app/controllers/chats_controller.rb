@@ -7,14 +7,15 @@ class ChatsController < ApplicationController
 
   def new
     @chat = Chat.new
-    @selected_model = params[:model]
+    @selected_model = params[:provider] ? [ params[:provider], params[:model] ].join(":") : params[:model]
     @chat_models = available_chat_models
   end
 
   def create
     prompt = params.dig(:chat, :prompt)
     if prompt.present?
-      @chat = Chat.create!(model: params.dig(:chat, :model).presence)
+      provider, model = params.dig(:chat, :model).to_s.split(":", 2)
+      @chat = Chat.create!(model: model.presence, provider: provider.presence)
       ChatResponseJob.perform_later(@chat.id, prompt)
 
       redirect_to @chat, notice: "Chat was successfully created."
