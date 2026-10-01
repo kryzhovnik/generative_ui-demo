@@ -68,4 +68,4 @@ group :test do
 end
 
 gem "ruby_llm", "~> 2.0"
-gem "generative_ui", github: "kryzhovnik/generative_ui", branch: "main"
+gem "generative_ui", "~> 0.1"
